@@ -56,10 +56,33 @@ function playRound(playerSelection, computerSelection)
     return result;
 }
 
-const computerSelection = getComputerChoice();
-console.log("Computer chose:", computerSelection);
-const playerSelection = prompt("Type your weapon here", "rock/paper/scissors").toLowerCase();
+function game()
+{
+    let scor = 0;
+    for (let i=0; i<5;i++)
+    {
+        const computerSelection = getComputerChoice();
+        console.log("Computer chose:", computerSelection);
+        const playerSelection = prompt("Type your weapon here", "rock/paper/scissors").toLowerCase();
+        if(playRound(playerSelection, computerSelection) === 'It\'s a draw!')
+        {
+            i--;
+        }
+        else if(playRound(playerSelection, computerSelection) === 'You win!')
+        {
+            scor++;
+        }
+    }
+    if(scor < 3)
+    {
+        console.log("Computer wins...by far");
+    }
+    else
+    {
+        console.log("You win...by far");
+    }
+}
 
-console.log(playRound(playerSelection, computerSelection));
+console.log(game());
 
 
